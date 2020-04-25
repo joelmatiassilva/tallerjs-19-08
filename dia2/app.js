@@ -29,6 +29,13 @@ new Vue({
         return `${this.regional} - ${this.carrera}`
       }
   },
+
+  watch: {
+    mostrarMaterias (newVal, oldVal) {
+        console.log(" mostrarMaterias - watch")
+        console.log(newVal, oldVal)
+    }
+  },
   
   created () {
     console.log('Created...')
