@@ -3,6 +3,8 @@ new Vue({
 
   data () {
     return {
+    regional: "FRBA",
+    carrera: "sistemas",
     hardColor: 'red',
     easyColor: 'blue',
     mostrarMaterias: true,
@@ -19,6 +21,13 @@ new Vue({
         ],
       }
     }
+  },
+
+  computed : {
+      tituloComputed () {
+        console.log("titulo computado - funciones que siempre devuelve un valor.")
+        return `${this.regional} - ${this.carrera}`
+      }
   },
   
   created () {
