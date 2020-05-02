@@ -115,29 +115,29 @@ new Vue({
     }
   },
   beforeCreate () {
-    console.log(' ************************** app beforeCreate...')
+    console.log(' ************************** APP beforeCreate...')
   },
 
   created () {
-    console.log(' ************************** app Created...')
+    console.log(' ************************** APP Created...')
   },
   beforeMount() {
-    console.log(' ************************** app beforeMounte...')
+    console.log(' ************************** APP beforeMounte...')
   },
   beforeUpdate() {
-    console.log(' ************************** app beforeUpdate...')
+    console.log(' ************************** APP beforeUpdate...')
   },
   mounted() {
-    console.log("************************ app mounted: %o", this.carrera) 
+    console.log("************************ APP mounted...") 
   },
   updated() {
-    console.log(' ************************** app updated...')
+    console.log(' ************************** APP updated...')
   },
   beforeDestroy () {
-    console.log("************************ app beforeDestroy")
+    console.log("************************ APP beforeDestroy")
   },
   destroy() {
-    console.log("************************ app destroy")
+    console.log("************************ APP destroy")
   }
 
 })
