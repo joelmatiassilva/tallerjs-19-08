@@ -25,10 +25,9 @@ Vue.component('MateriaDetalle', {
     </div>
       `,
     watch: {
-      materia (newVal, oldVal) {
+      async materia (newVal, oldVal) {
           this.backCarreraMaterias = this.carrera
-          let found
-
+          var found
 
           if (this.materia !== ''){  
             found =  this.componentCarrera["materias"].find(element => element.nombre === this.materia);
@@ -42,24 +41,56 @@ Vue.component('MateriaDetalle', {
             this.componentCarrera["materias"]  = [{ nombre: found.nombre, dia: found.dia, dificultad: found.dificultad }]
           } 
 
+          /*
+            found = () => {
+              return this.materia !== ''
+                ?  
+                this.componentCarrera["materias"].find(element => element.nombre === this.materia)
+                :
+                undefined
+            }
+
+
+            if (found()) {
+              this.componentCarrera["materias"]  = [{ nombre: found().nombre, dia: found().dia, dificultad: found().dificultad }]
+            } else {
+              this.componentCarrera = {...this.carrera}
+            }
+          */
 
       }
     },
       methods: {
         toogleMostrarMaterias () {
-            console.log("toogleMostrarMaterias")
+            console.log("methods - toogleMostrarMaterias")
             this.mostrarMaterias = !this.mostrarMaterias
         }
       },
-      created () {
-        console.log(' component Created...')
+      beforeCreate () {
+        console.log(' ************************** component beforeCreate...')
       },
+
       created () {
-        console.log(' component Created...')
+        console.log(' ************************** component Created...')
+      },
+      beforeMount() {
+        console.log(' ************************** component beforeMounte...')
+      },
+      beforeUpdate() {
+        console.log(' ************************** component beforeUpdate...')
       },
       mounted() {
-        console.log("mounted: %o", this.carrera) // I'm text inside the component.
+        console.log("************************ component mounted: %o", this.carrera) 
         this.componentCarrera = { ...this.carrera}
+      },
+      updated() {
+        console.log(' ************************** component updated...')
+      },
+      beforeDestroy () {
+        console.log("************************ component beforeDestroy")
+      },
+      destroy() {
+        console.log("************************ component destroy")
       }
 })
 
@@ -83,13 +114,30 @@ new Vue({
       }        
     }
   },
+  beforeCreate () {
+    console.log(' ************************** app beforeCreate...')
+  },
 
   created () {
-    console.log(' app Created...')
+    console.log(' ************************** app Created...')
   },
-
-  mounted () {
-    console.log('app Mounted...')
+  beforeMount() {
+    console.log(' ************************** app beforeMounte...')
   },
+  beforeUpdate() {
+    console.log(' ************************** app beforeUpdate...')
+  },
+  mounted() {
+    console.log("************************ app mounted: %o", this.carrera) 
+  },
+  updated() {
+    console.log(' ************************** app updated...')
+  },
+  beforeDestroy () {
+    console.log("************************ app beforeDestroy")
+  },
+  destroy() {
+    console.log("************************ app destroy")
+  }
 
 })
