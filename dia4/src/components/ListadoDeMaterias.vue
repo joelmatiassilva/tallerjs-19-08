@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <h1>{{ carrrera.título }}</h1>
+    <h1>{{ carrera.titulo }}</h1>
 
 
     <span v-on:click="toogleMostrarMaterias">Mostrar Materias
@@ -8,7 +8,7 @@
     </span>
 
     <ul id="lasMaterias" v-show=mostrarMaterias>
-        <li v-for="materia in carrrera.materias" :key="materia.dia">
+        <li v-for="materia in carrera.materias" :key="materia.dia">
           <div v-if="materia.dificultad > 3" v-bind:style="{ color: hardColor }">{{ materia.dia }} - {{ materia.nombre }}</div>
           <div v-else v-bind:style="{ color: easyColor }">{{ materia.dia }} - {{ materia.nombre }}</div>
         </li>
@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: 'ListadoDeMaterias',
   props: {
@@ -25,12 +27,11 @@ export default {
     data () {
     return {
     regional: "FRBA",
-    carrera: "sistemas",
     hardColor: 'red',
     easyColor: 'blue',
     mostrarMaterias: true,
-      carrrera: {
-        título: 'Materias de Sistemas',
+      carrera: {
+        titulo: 'Materias de Sistemas',
         materias: [
           { dia: 'Lunes', nombre: "Análisis Matemática", dificultad: 5 },
           { dia: 'Martes', nombre: "Álgebra", dificultad: 4 },
@@ -56,8 +57,12 @@ export default {
     }
   },
   
-  created () {
+  async created () {
     console.log('Created...')
+    await axios.get("https://us-central1-tallervuejs-642f7.cloudfunctions.net/api3").then((result) => {
+      console.log(result);
+      this.carrera["titulo"] = result.data;
+    })
   },
 
   mounted () {
