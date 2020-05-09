@@ -31,7 +31,6 @@ export default {
     mostrarMaterias: true,
       carrrera: {
         título: 'Materias de Sistemas',
-        img: 'https://cryptologos.cc/logos/bitcoin-btc-logo.png',
         materias: [
           { dia: 'Lunes', nombre: "Análisis Matemática", dificultad: 5 },
           { dia: 'Martes', nombre: "Álgebra", dificultad: 4 },
